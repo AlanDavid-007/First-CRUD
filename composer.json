@@ -1,0 +1,8 @@
+{
+    "name": "FIRST-CRUD/",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
