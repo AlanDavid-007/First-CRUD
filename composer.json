@@ -1,5 +1,5 @@
 {
-    "name": "FIRST-CRUD/",
+    "name": "crudemaula/vagas",
     "autoload": {
         "psr-4": {
             "App\\": "app/"
