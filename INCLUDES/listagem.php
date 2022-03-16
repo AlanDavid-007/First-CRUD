@@ -1,4 +1,7 @@
 <section>
+    <a href="cadastrar">
+        <button class="btn btn-success">Cadastrar</button>
+</a>
     <table class="table bg-light mt-3">
         <thead>
             <tr>
