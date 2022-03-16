@@ -60,7 +60,7 @@
             try {
                 //PDO é a classe que recebe os parametros para devolver um objeto de conexão com o banco de dados
                 $this->connection = new PDO('mysql:host=localhost'.self::HOST.';dbname=primeirocrud'.self::NAME, self::USER, self::PASS);
-                $this->connection->setAttribute(PDO::attr_errmode, PDO::ERRMODE_EXCEPTION);
+                $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }catch(PDOException $e) {
                 die('ERROR: ' . $e->getMessage());
             }
