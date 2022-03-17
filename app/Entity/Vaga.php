@@ -41,11 +41,20 @@
         public function cadastrar() {
             //Definir data
             $this->data = date('Y-m-d H:i:s');
-            echo "<pre>"; print_r($this); echo "</pre>"; exit;
+            // echo "<pre>"; print_r($this); echo "</pre>"; exit;
             
-            //Inserir vaga no banco e retornar o ID
+            //Inserir a vaga no banco e retornar o ID
+            $objDatabase = new Database('vagas');
+            $this->id = $objDatabase->insert([
+                'titulo' => $this->titulo,
+                'descricao' => $this->descricao,
+                'status' => $this->status,
+                'data' => $this->data
+            ]);
+            //echo "<pre>"; print_r($this); echo "</pre>"; exit;
             
-        }
+            //Retornar sucesso
+            return true;
+        }       
    }
-
 ?>

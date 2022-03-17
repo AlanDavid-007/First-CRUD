@@ -8,7 +8,7 @@
     <form method="post" class="form-send">
         <div class="form-group">
             <label>Título</label>
-            <input type="text" required class="form-control" name="Título">
+            <input type="text" required class="form-control" name="titulo">
         </div>
         <div class="form-group">
             <label>Descrição</label>
