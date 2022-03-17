@@ -29,8 +29,6 @@ Users should be able to:
 - PHP
 - SQL
 
-### LivePage
-https://alandavid-007.github.io/First-CRUD/
 ## Author
 
 - Frontend Mentor - [#MyProfile](https://www.frontendmentor.io/profile/AlanDavid-007)
