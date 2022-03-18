@@ -8,7 +8,6 @@ This is a solution to a lesson of Creating a CRUD.
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
   - [Built with](#built-with)
-  - [Live Page](#LivePage)
 - [Author](#author)
 
 ## Overview
