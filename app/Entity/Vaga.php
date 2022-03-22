@@ -41,6 +41,7 @@ class Vaga
      * Função para cadastrar a vaga no banco
      * @var boolean
      */
+
     public function cadastrar()
     {
         //Definir data
@@ -60,14 +61,15 @@ class Vaga
         //Retornar sucesso
         return true;
     }
-     /**
-         * * Método responsável por obter as vagas do banco de dados
 
-         *@params string $where 
-         *@params string $order
-         *@params string $limit 
-         *@return array
-         */
+    /**
+     * Método responsável por obter as vagas do banco de dados
+
+     *@params string $where 
+     *@params string $order
+     *@params string $limit 
+     *@return array
+     */
 
     public static function getVagas($where = null, $order = null, $limit = null)
     {
@@ -76,17 +78,31 @@ class Vaga
 
         return ($objDatabase)->select($where, $order, $limit)->fetchAll(PDO::FETCH_CLASS, self::class);
     }
-    /**
-         * * Método responsável por obter as vagas do banco de dados
 
-         *@params int $id
-         *@return Vaga
-         */
+    /**
+     * Método responsável por obter as vagas do banco de dados
+
+     *@params int $id
+     *@return Vaga
+     */
+
     public static function getVaga($id)
     {
 
         $objDatabase = new Database('vagas');
 
-        return ($objDatabase)->select('id = ' .$id)->fetchObject(self::class);
+        return ($objDatabase)->select('id = ' . $id)->fetchObject(self::class);
+    }
+
+    /**
+     * Função para excluir vagas no banco
+     *@return boolean
+     */
+
+    public function excluir()
+    {
+        $objDatabase = new Database('vagas');
+
+        return ($objDatabase)->delete('id =' . $this->id);
     }
 }

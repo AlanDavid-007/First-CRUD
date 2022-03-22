@@ -95,8 +95,9 @@ class Database
      * Método responsável por inserir registros no banco
      * @param array $values [field => value]
      * @return Id inserido
-    */
-    public function insert($values) {
+     */
+    public function insert($values)
+    {
         // $query = 'INSERT INTO vagas (titulo, descricao, data, status) VALUES (?,?,?,?)';
         // ? = O PDO usa esse formato para validar e verificar a proteção contra SQLInjection
         // echo "<pre>"; print_r($values); echo "</pre>"; exit;
@@ -110,10 +111,10 @@ class Database
 
         //Monta a query
         //implode transporma um array em uma string
-        $query = 'INSERT INTO '.$this->table.' ('.implode(",", $fields).') VALUES ('.implode(",", $binds).')';
+        $query = 'INSERT INTO ' . $this->table . ' (' . implode(",", $fields) . ') VALUES (' . implode(",", $binds) . ')';
         // echo "<pre>"; print_r($query); echo "</pre>"; exit;
         // echo "<pre>"; print_r(array_values($values)); echo "</pre>"; exit;
-        
+
         //Executa o insert
         $this->executar($query, array_values($values));
 
@@ -136,19 +137,36 @@ class Database
      * @params string $order
      * @params string $limit
      * @return PDOStatement
-    */
-    public function select($where = null, $order = null, $limit = null, $fields = '*') {
+     */
+    public function select($where = null, $order = null, $limit = null, $fields = '*')
+    {
         //Dados da query
-        $where = strlen($where) ? 'WHERE '.$where : '';
-        $order = strlen($order) ? 'ORDER '.$order : '';
-        $limit = strlen($limit) ? 'LIMIT '.$limit : '';
+        $where = strlen($where) ? 'WHERE ' . $where : '';
+        $order = strlen($order) ? 'ORDER ' . $order : '';
+        $limit = strlen($limit) ? 'LIMIT ' . $limit : '';
         // echo "<pre>"; print_r($where); echo "</pre>"; exit;
 
         //Monta query
-        $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.' '.$limit;
+        $query = 'SELECT ' . $fields . ' FROM ' . $this->table . ' ' . $where . ' ' . $order . ' ' . ' ' . $limit;
         // echo "<pre>"; print_r($query); echo "</pre>"; exit;
 
         return $this->executar($query);
     }
-    
+
+    /** 
+     * Método responsável por executar exclusões no banco de dados
+     * @params string $where
+     * @return boolean
+     */
+
+    public function delete($where)
+    {
+        //Monta query
+        $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $where;
+        // echo "<pre>"; print_r($where); echo "</pre>"; exit;
+
+        //Executar query
+        $this->executar($query);
+        return true;
+    }
 }
