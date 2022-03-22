@@ -1,60 +1,92 @@
-<?php 
-   namespace App\Entity;
-   use \App\Db\Database;
-   use \PDO;
+<?php
 
-   class Vaga {
-        /** 
-         * Identificador único da vaga
-         * @var integer
-        */
-        public $id;
+namespace App\Entity;
 
-        /** 
-         * Título da vaga
-         * @var string
-        */
-        public $titulo;
+use \App\Db\Database;
+use \PDO;
 
-        /** 
-         * Descrição da vaga (pode conter html)
-         * @var string
-        */
-        public $descricao;
+class Vaga
+{
+    /** 
+     * Identificador único da vaga
+     * @var integer
+     */
+    public $id;
 
-        /** 
-         * Define se a vaga está ativa (s or n)
-         * @var string
-        */
-        public $status;
+    /** 
+     * Título da vaga
+     * @var string
+     */
+    public $titulo;
 
-        /** 
-         * Data da publicação da vaga
-         * @var timestamp
-        */
-        public $data;
+    /** 
+     * Descrição da vaga (pode conter html)
+     * @var string
+     */
+    public $descricao;
 
-        /** 
-         * Função para cadastrar a vaga no banco
-         * @var boolean
-        */
-        public function cadastrar() {
-            //Definir data
-            $this->data = date('Y-m-d H:i:s');
-            // echo "<pre>"; print_r($this); echo "</pre>"; exit;
-            
-            //Inserir a vaga no banco e retornar o ID
-            $objDatabase = new Database('vagas');
-            $this->id = $objDatabase->insert([
-                'titulo' => $this->titulo,
-                'descricao' => $this->descricao,
-                'status' => $this->status,
-                'data' => $this->data
-            ]);
-            //echo "<pre>"; print_r($this); echo "</pre>"; exit;
-            
-            //Retornar sucesso
-            return true;
-        }       
-   }
-?>
+    /** 
+     * Define se a vaga está ativa (s or n)
+     * @var string
+     */
+    public $status;
+
+    /** 
+     * Data da publicação da vaga
+     * @var timestamp
+     */
+    public $data;
+
+    /** 
+     * Função para cadastrar a vaga no banco
+     * @var boolean
+     */
+    public function cadastrar()
+    {
+        //Definir data
+        $this->data = date('Y-m-d H:i:s');
+        // echo "<pre>"; print_r($this); echo "</pre>"; exit;
+
+        //Inserir a vaga no banco e retornar o ID
+        $objDatabase = new Database('vagas');
+        $this->id = $objDatabase->insert([
+            'titulo' => $this->titulo,
+            'descricao' => $this->descricao,
+            'status' => $this->status,
+            'data' => $this->data
+        ]);
+        //echo "<pre>"; print_r($this); echo "</pre>"; exit;
+
+        //Retornar sucesso
+        return true;
+    }
+     /**
+         * * Método responsável por obter as vagas do banco de dados
+
+         *@params string $where 
+         *@params string $order
+         *@params string $limit 
+         *@return array
+         */
+
+    public static function getVagas($where = null, $order = null, $limit = null)
+    {
+
+        $objDatabase = new Database('vagas');
+
+        return ($objDatabase)->select($where, $order, $limit)->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
+    /**
+         * * Método responsável por obter as vagas do banco de dados
+
+         *@params int $id
+         *@return Vaga
+         */
+    public static function getVaga($id)
+    {
+
+        $objDatabase = new Database('vagas');
+
+        return ($objDatabase)->select('id = ' .$id)->fetchObject(self::class);
+    }
+}
