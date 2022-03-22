@@ -6,7 +6,6 @@ This is a solution to a lesson of Creating a CRUD.
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
   - [Built with](#built-with)
 - [Author](#author)
 
