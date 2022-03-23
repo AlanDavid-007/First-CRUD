@@ -13,7 +13,7 @@
 
         <div class="form-group">
             <a href="index.php">
-                <button class="btn btn-secondary">Cancelar</button>
+                <button class="btn btn-secondary"><a href="index.php" style="text-decoration: none; color: white;">Cancelar</a></button>
             </a>
             <button type="submit" name="excluir" class="btn btn-danger">Excluir</button>
         </div>

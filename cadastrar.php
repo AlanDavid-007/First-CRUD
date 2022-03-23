@@ -1,27 +1,28 @@
-<?php 
-    require __DIR__.'/vendor/autoload.php';
+<?php
+require __DIR__ . '/vendor/autoload.php';
 
-    use \App\Entity\Vaga;
-    $obVaga = new Vaga;
+define('TITLE', 'Cadastrar Vaga');
 
-    // echo "<pre>"; print_r($_POST['descricao']); echo "</pre>"; exit;
-    if(isset($_POST['titulo'], $_POST['descricao'], $_POST['status'])) { 
-        
-        $obVaga->titulo = $_POST['titulo']; 
-        $obVaga->descricao = $_POST['descricao']; 
-        $obVaga->status = $_POST['status']; 
+use \App\Entity\Vaga;
 
-        $obVaga->cadastrar(); 
-        // echo "<pre>"; print_r($obVaga); echo "</pre>"; exit; 
+$obVaga = new Vaga;
 
-         header('location: index.php?status=success'); 
-         exit; 
-    }
-    
-    require __DIR__.'/INCLUDES/header.php';
+// echo "<pre>"; print_r($_POST['descricao']); echo "</pre>"; exit;
+if (isset($_POST['titulo'], $_POST['descricao'], $_POST['status'])) {
 
-    require __DIR__.'/INCLUDES/formulario.php';
+    $obVaga->titulo = $_POST['titulo'];
+    $obVaga->descricao = $_POST['descricao'];
+    $obVaga->status = $_POST['status'];
 
-    require __DIR__.'/INCLUDES/footer.php';
-        
-?>
+    $obVaga->cadastrar();
+    // echo "<pre>"; print_r($obVaga); echo "</pre>"; exit; 
+
+    header('location: index.php?status=success');
+    exit;
+}
+
+require __DIR__ . '/INCLUDES/header.php';
+
+require __DIR__ . '/INCLUDES/formulario.php';
+
+require __DIR__ . '/INCLUDES/footer.php';
